@@ -1,4 +1,4 @@
-package global.OAuth;
+package user.global.OAuth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

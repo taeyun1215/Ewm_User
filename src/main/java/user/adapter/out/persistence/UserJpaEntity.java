@@ -1,6 +1,6 @@
 package user.adapter.out.persistence;
 
-import global.baseEntity.BaseTimeEntity;
+import user.global.baseEntity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

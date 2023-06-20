@@ -1,6 +1,6 @@
 package user.adapter.in.request;
 
-import global.common.SelfValidating;
+import user.global.common.SelfValidating;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import user.domain.User;

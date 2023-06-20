@@ -1,6 +1,6 @@
-package global.utils;
+package user.global.utils;
 
-import global.error.ErrorCode;
+import user.global.error.ErrorCode;
 import lombok.Builder;
 import lombok.Data;
 

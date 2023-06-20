@@ -1,6 +1,6 @@
 package user.application.service;
 
-import global.annotation.UseCase;
+import user.global.annotation.UseCase;
 import lombok.RequiredArgsConstructor;
 import user.application.port.in.query.CheckUsernameQuery;
 import user.application.port.out.LoadUserPort;

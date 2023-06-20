@@ -1,6 +1,6 @@
 package user.domain;
 
-import global.baseEntity.BaseTimeEntity;
+import user.global.baseEntity.BaseTimeEntity;
 import lombok.*;
 import user.adapter.out.persistence.UserJpaEntity;
 import user.domain.constant.Role;

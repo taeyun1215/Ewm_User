@@ -1,7 +1,7 @@
 package user.adapter.in.web;
 
-import global.error.ErrorCode;
-import global.utils.ReturnObject;
+import user.global.error.ErrorCode;
+import user.global.utils.ReturnObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

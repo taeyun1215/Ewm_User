@@ -1,4 +1,4 @@
-package global.error;
+package user.global.error;
 
 import lombok.Getter;
 

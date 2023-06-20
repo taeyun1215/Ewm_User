@@ -1,4 +1,4 @@
-package global.baseEntity;
+package user.global.baseEntity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

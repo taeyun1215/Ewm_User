@@ -1,6 +1,6 @@
-package global.argumentResolver;
+package user.global.argumentResolver;
 
-import global.annotation.LoginUser;
+import user.global.annotation.LoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;

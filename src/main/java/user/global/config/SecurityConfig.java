@@ -1,7 +1,7 @@
-package global.config;
+package user.global.config;
 
-import global.OAuth.CustomOAuth2UserService;
-import global.argumentResolver.LoginArgumentResolver;
+import user.global.OAuth.CustomOAuth2UserService;
+import user.global.argumentResolver.LoginArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

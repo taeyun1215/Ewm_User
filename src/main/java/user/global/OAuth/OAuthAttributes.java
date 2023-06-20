@@ -1,4 +1,4 @@
-package global.OAuth;
+package user.global.OAuth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

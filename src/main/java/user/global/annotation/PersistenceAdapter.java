@@ -1,4 +1,4 @@
-package global.annotation;
+package user.global.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;

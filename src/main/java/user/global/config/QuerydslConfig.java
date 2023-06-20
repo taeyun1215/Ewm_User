@@ -1,4 +1,4 @@
-package global.config;
+package user.global.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;
