@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import user.adapter.out.persistence.UserJpaEntity;
 import user.adapter.out.persistence.UserJpaRepo;
 
 import java.util.HashMap;
@@ -20,7 +19,7 @@ public class KafkaConsumer {
     private final UserJpaRepo userJpaRepo;
 
     @KafkaListener(topics = "example-catalog-topic")
-    public UserJpaEntity updateQty(String kafkaMessage) {
+    public void updateQty(String kafkaMessage) {
         log.info("Kafka Message: ->" + kafkaMessage);
 
         Map<Object, Object> map = new HashMap<>();
@@ -28,10 +27,11 @@ public class KafkaConsumer {
 
         try {
             map = mapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>() {});
-        } catch (JsonProcessingException exception) {
-            exception.printStackTrace();;
+        } catch (JsonProcessingException ex) {
+            ex.printStackTrace();
         }
-        UserJpaEntity userJpaEntity = userJpaRepo.findByUsername((String) map.get("username")).get();
-        return userJpaEntity;
+        log.info("");
+        log.info("this is " + (String) map.get("userId"));
+        log.info("");
     }
 }
