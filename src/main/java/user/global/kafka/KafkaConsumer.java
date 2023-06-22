@@ -31,7 +31,7 @@ public class KafkaConsumer {
             ex.printStackTrace();
         }
         log.info("");
-        log.info("this is " + (String) map.get("userId"));
+        log.info("this is " + (String) map.get("title"));
         log.info("");
     }
 }
