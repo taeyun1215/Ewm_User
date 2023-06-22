@@ -20,7 +20,7 @@ spring:
   datasource:
     url: jdbc:mariadb://43.201.144.113:3306/user-db
     username: root
-    password: taeyun1215
+    password: 6548
 
   jpa:
     hibernate:
