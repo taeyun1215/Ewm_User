@@ -18,7 +18,7 @@ import java.util.Map;
 public class KafkaConsumer {
     private final UserJpaRepo userJpaRepo;
 
-    @KafkaListener(topics = "example-catalog-topic")
+    @KafkaListener(topics = "user-topic")
     public void updateQty(String kafkaMessage) {
         log.info("Kafka Message: ->" + kafkaMessage);
 
@@ -30,8 +30,7 @@ public class KafkaConsumer {
         } catch (JsonProcessingException ex) {
             ex.printStackTrace();
         }
-        log.info("");
+
         log.info("this is " + (String) map.get("title"));
-        log.info("");
     }
 }
