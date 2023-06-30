@@ -1,6 +1,7 @@
 package user.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.conn.util.PublicSuffixList;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -85,6 +86,68 @@ public class UserRegisterControllerTest {
                 .andExpect(jsonPath("$.data.nickname", is("test22222")))
                 .andExpect(jsonPath("$.data.phone", is("010-1111-2222")))
                 .andExpect(jsonPath("$.data.email", is("taeyun1215@naver.com")));
+    }
+
+    @Nested
+    @DisplayName("실패 테스트")
+    class FailCases {
+        @Nested
+        @DisplayName("username")
+        class userId {
+            @Test
+            @DisplayName("null")
+            void failUserId1() throws Exception {
+                // Given
+                RegisterUserRequest request = new RegisterUserRequest(
+                        null,
+                        "woogi101^^",
+                        "woogi101^^",
+                        "test22222",
+                        "010-1111-2222",
+                        "taeyun1215@naver.com"
+                );
+
+                // When
+                final ResultActions resultActions = mockMvc.perform(
+                        MockMvcRequestBuilders.post("/user-service/users/register")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(new ObjectMapper().writeValueAsString(request))
+                );
+
+                // Then
+                resultActions
+                        .andDo(print())
+                        .andExpect(status().isBadRequest())
+                        .andExpect(jsonPath("$.message", is("username는 필수 값입니다.")));
+            }
+
+            @Test
+            @DisplayName("mismatch pattern")
+            void failUserId2() throws Exception {
+                // Given
+                RegisterUserRequest request = new RegisterUserRequest(
+                        "tttttttt",
+                        "woogi101^^",
+                        "woogi101^^",
+                        "test22222",
+                        "010-1111-2222",
+                        "taeyun1215@naver.com"
+                );
+
+                // When
+                final ResultActions resultActions = mockMvc.perform(
+                        MockMvcRequestBuilders.post("/user-service/users/register")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(new ObjectMapper().writeValueAsString(request))
+                );
+
+                // Then
+                resultActions
+                        .andDo(print())
+                        .andExpect(status().isBadRequest())
+                        .andExpect(jsonPath("$.message", is("username가 패턴에 맞지 않습니다.")));
+            }
+        }
     }
 
 }
