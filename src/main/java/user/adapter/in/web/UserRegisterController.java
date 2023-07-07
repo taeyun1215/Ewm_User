@@ -1,6 +1,5 @@
 package user.adapter.in.web;
 
-import user.global.utils.ReturnObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import user.adapter.in.request.RegisterUserRequest;
 import user.adapter.out.persistence.UserResponseMapper;
 import user.adapter.out.response.RegisterUserResponse;
+import user.application.port.in.command.RegisterUserCommand;
 import user.application.port.in.usecase.RegisterUserUseCase;
 import user.domain.User;
+import user.global.utils.ReturnObject;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,7 +27,16 @@ public class UserRegisterController {
     public ResponseEntity<ReturnObject> registerUser(
             @RequestBody RegisterUserRequest registerUserRequest
     ) {
-        User user = registerUserUseCase.registerUser(registerUserRequest);
+        RegisterUserCommand command = RegisterUserCommand.builder()
+                .username(registerUserRequest.getUsername())
+                .password(registerUserRequest.getPassword())
+                .confirmPassword(registerUserRequest.getConfirmPassword())
+                .nickname(registerUserRequest.getNickname())
+                .phone(registerUserRequest.getPhone())
+                .email(registerUserRequest.getEmail())
+                .build();
+
+        User user = registerUserUseCase.registerUser(command);
         RegisterUserResponse response = userResponseMapper.mapToRegisterUserResponse(user);
 
         ReturnObject returnObject = ReturnObject.builder()

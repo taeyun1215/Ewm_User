@@ -33,4 +33,5 @@ public class KafkaConsumer {
 
         log.info("this is " + (String) map.get("title"));
     }
+
 }

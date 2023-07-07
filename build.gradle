@@ -41,7 +41,8 @@ dependencies {
 
 	//querydsl 추가
 	implementation "com.querydsl:querydsl-jpa:5.0.0"
-	annotationProcessor "com.querydsl:querydsl-apt:5.0.0"
+    testImplementation 'junit:junit:4.13.1'
+    annotationProcessor "com.querydsl:querydsl-apt:5.0.0"
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'

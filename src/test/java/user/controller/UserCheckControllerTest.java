@@ -88,4 +88,51 @@ public class UserCheckControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @Nested
+    @DisplayName("실패 테스트")
+    class FailCases {
+        @Nested
+        @DisplayName("nickname")
+        class nickname {
+            @Test
+            @DisplayName("null")
+            void failUsername() throws Exception {
+                // Given
+                String nickname = null;
+
+                // When
+                final ResultActions resultActions = mockMvc.perform(
+                        MockMvcRequestBuilders.get("/user-service/users/nickname/"+nickname+"/exists")
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
+
+                // then
+                resultActions
+                        .andDo(print())
+                        .andExpect(status().isBadRequest());
+            }
+        }
+
+        @Nested
+        @DisplayName("username")
+        class username {
+            @Test
+            @DisplayName("null")
+            void failUsername() throws Exception {
+                // Given
+                String username = null;
+
+                // When
+                final ResultActions resultActions = mockMvc.perform(
+                        MockMvcRequestBuilders.get("/user-service/users/username/"+username+"/exists")
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
+
+                // then
+                resultActions
+                        .andDo(print())
+                        .andExpect(status().isBadRequest());
+            }
+        }
+    }
 }

@@ -1,10 +1,10 @@
 package user.application.port.in.usecase;
 
-import user.adapter.in.request.RegisterUserRequest;
+import user.application.port.in.command.RegisterUserCommand;
 import user.domain.User;
 
 public interface RegisterUserUseCase {
 
-    User registerUser(RegisterUserRequest registerUserRequest);
+    User registerUser(RegisterUserCommand command);
 
 }

@@ -1,10 +1,8 @@
 package user.adapter.in.request;
 
-import user.global.common.SelfValidating;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-import user.domain.User;
-import user.domain.constant.Role;
+import user.global.common.SelfValidating;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -62,17 +60,6 @@ public class RegisterUserRequest extends SelfValidating<RegisterUserRequest> {
         this.phone = phone;
         this.email = email;
         this.validateSelf();
-    }
-
-    public User toEntity() {
-        return User.builder()
-                .username(username)
-                .password(password)
-                .nickname(nickname)
-                .phone(phone)
-                .email(email)
-                .role(Role.USER)
-                .build();
     }
 
 }
